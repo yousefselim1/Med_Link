@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding-top: 50px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: white;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-group input {
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            outline: none;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .form-group input:focus {
+            border-color: #4CAF50;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+
+        .form-group .icon {
+            margin-right: 12px;
+        }
+
+        /* Social Buttons */
+        .social-login-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48%;
+            padding: 12px;
+            border-radius: 4px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .btn-facebook {
+            background-color: #3b5998; /* Facebook color */
+        }
+
+        .btn-google {
+            background-color: #db4437; /* Google color */
+        }
+
+        .btn-social img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+
+        .signup-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            .social-login-btns {
+                flex-direction: column;
+            }
+            .btn-social {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Login</h1>
+    
+    <div class="container">
+        <form action="#" method="post">
+            {% csrf_token %}
+            {% load static %}
+            {% load socialaccount %}
+
+
+            <!-- Email Input -->
+            <div class="form-group">
+                <input type="email" placeholder="Enter your email" name="email" required>
+            </div>
+
+            <!-- Password Input -->
+            <div class="form-group">
+                <input type="password" placeholder="Enter your password" name="password" required autocomplete="off">
+
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <input type="submit" value="Login">
+            </div>
+
+            <!-- Social Login Buttons -->
+            <div class="social-login-btns">
+                <!-- Facebook Button -->
+
+
+                <!-- Google Button -->
+                <a href="{% provider_login_url 'google' %}?next=/" class="btn-social btn-google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Google_2015_logo.svg.png" alt="Google Logo">
+                 Login with Google
+                </a>
+
+            </div>
+ 
+        </form>
+       
+        <!-- Signup Footer -->
+        <div class="signup-footer">
+            Don't have an account? <a href="http://localhost:8000/signup/">Register</a>
+        </div>
+    </div>
+</body>
+</html>
