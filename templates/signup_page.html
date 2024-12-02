@@ -1,0 +1,181 @@
+
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <title>Signup Page</title>
+     <style>
+         body {
+             font-family: Arial, Helvetica, sans-serif;
+             background-color: #f4f7fc;
+             margin: 0;
+             padding: 0;
+         }
+ 
+         h1 {
+             text-align: center;
+             color: #333;
+             padding-top: 50px;
+         }
+ 
+         .container {
+             width: 90%;
+             max-width: 500px;
+             background-color: white;
+             margin: 30px auto;
+             padding: 20px;
+             border-radius: 8px;
+             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+         }
+ 
+         .form-group {
+             margin-bottom: 20px;
+             display: flex;
+             align-items: center;
+             border-bottom: 2px solid #ddd;
+             padding-bottom: 12px;
+         }
+ 
+         .form-group label {
+             flex: 1;
+             font-size: 16px;
+             color: #333;
+         }
+ 
+         .form-group input {
+             flex: 2;
+             padding: 12px;
+             font-size: 14px;
+             border-radius: 4px;
+             border: 1px solid #ddd;
+             outline: none;
+         }
+ 
+         .form-group input:focus {
+             border-color: #4CAF50;
+         }
+ 
+         .form-group input[type="text"], 
+         .form-group input[type="email"], 
+         .form-group input[type="password"], 
+         .form-group input[type="phone"] {
+             width: 100%;
+         }
+ 
+         .form-group input[type="submit"] {
+             background-color: #4CAF50;
+             color: white;
+             border: none;
+             font-size: 16px;
+             cursor: pointer;
+             width: 100%;
+             padding: 12px;
+             border-radius: 4px;
+         }
+ 
+         .form-group input[type="submit"]:hover {
+             opacity: 0.8;
+         }
+ 
+         .form-group input[type="radio"] {
+             margin-right: 10px;
+         }
+ 
+         .form-group .icon {
+             margin-right: 12px;
+         }
+ 
+         .signup-footer {
+             text-align: center;
+             margin-top: 20px;
+         }
+ 
+         .signup-footer a {
+             color: #4CAF50;
+             text-decoration: none;
+         }
+ 
+         .avatar {
+             width: 100px;
+             height: 100px;
+             border-radius: 50%;
+             object-fit: cover;
+             margin-bottom: 20px;
+         }
+ 
+         /* Responsive Styles */
+         @media (max-width: 768px) {
+             .container {
+                 width: 90%;
+                 padding: 15px;
+             }
+         }
+     </style>
+ </head>
+ <body>
+     <h1>Create an Account</h1>
+     <div class="container">
+         <form action="#" method="post">
+             {% csrf_token %}
+             {% load static %}
+             
+             <div class="form-group">
+                 <img src="{% static 'avatar_img2.png' %}" alt="Avatar" class="avatar">
+             </div>
+ 
+             <div class="form-group">
+                 <label for="user_name"><b>Username:</b></label>
+                 <input type="text" placeholder="Enter your username" name="user_name" required>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="first_name"><b>First Name:</b></label>
+                 <input type="text" placeholder="Enter your first name" name="first_name" required>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="last_name"><b>Last Name:</b></label>
+                 <input type="text" placeholder="Enter your last name" name="last_name" required>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="email"><b>Email Address:</b></label>
+                 <input type="email" placeholder="Enter your email" name="email" required>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="password"><b>Password:</b></label>
+                 <input type="password" placeholder="Enter your password" name="password" required>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="address"><b>Address:</b></label>
+                 <input type="text" placeholder="Enter your address" name="address" required>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="phone"><b>Phone Number:</b></label>
+                 <input type="text" placeholder="Enter your phone number" name="phone" required>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="role"><b>Role:</b></label>
+                 <input type="text" placeholder="Enter your role (e.g., admin, user)" name="role" required>
+             </div>
+ 
+             <div class="form-group">
+                 <input type="submit" value="Signup">
+             </div>
+         </form>
+ 
+         <div class="signup-footer">
+             Already have an account? <a href="http://localhost:8000/login/">Login</a>
+         </div>
+     </div>
+ </body>
+ </html>
+ 
