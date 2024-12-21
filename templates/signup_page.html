@@ -99,14 +99,7 @@
              text-decoration: none;
          }
  
-         .avatar {
-             width: 100px;
-             height: 100px;
-             border-radius: 50%;
-             object-fit: cover;
-             margin-bottom: 20px;
-         }
- 
+
          /* Responsive Styles */
          @media (max-width: 768px) {
              .container {
@@ -121,11 +114,8 @@
      <div class="container">
          <form action="#" method="post">
              {% csrf_token %}
-             {% load static %}
+             {% load static %} 
              
-             <div class="form-group">
-                 <img src="{% static 'avatar_img2.png' %}" alt="Avatar" class="avatar">
-             </div>
  
              <div class="form-group">
                  <label for="user_name"><b>Username:</b></label>

@@ -1,6 +1,3 @@
-
-
-
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render
 import mysql.connector as sql
@@ -56,5 +53,3 @@ def signupaction(request):
 
     return render(request, 'signup_page.html')
 
-
-  

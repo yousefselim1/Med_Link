@@ -53,6 +53,17 @@
             margin-bottom: 15px;
         }
 
+        .form-group input[type="submit"] {
+            background-color: #3fb328;
+            color: rgb(236, 234, 234);
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            width: 45%;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
         /* Result Item */
         li strong {
             font-size: 1.2rem;
@@ -85,20 +96,26 @@
             <ul>
                 {% for drug in results %}
                     <li>
-                        <strong>{{ drug.name }}</strong><br>
-                        Category: {{ drug.category }}<br>
-                        Description: {{ drug.description }}<br>
+                        <strong>{{ drug.name }}</strong><br><br>
+                        Category: {{ drug.category }}<br><br>
+                        Description: {{ drug.description }}<br><br>
                         {% if drug.price %}
-                            Price: ${{ drug.price }}<br>
+                            Price: ${{ drug.price }}<br><br>
                         {% endif %}
+                        
+                        <img src="{{ drug.link }}" alt="{{ drug.name }}">
+
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
             <p>No results found for "{{ query }}".</p>
         {% endif %}
-        
-        <a href="{% url 'search_drugs' %}">Back to Search</a>
+
+        <div class="form-group">
+            <input type="submit" value="Add to cart"><br>
+        </div>
+        <a href="{% url 'home' %}">Back to Search</a>
     </div>
 </body>
 </html>

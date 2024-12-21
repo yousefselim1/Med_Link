@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.contrib.auth.hashers import check_password
 import mysql.connector as sql
 
 # Global variables for email and password
+
+
 
 def loginaction(request):
     global em, pwd
@@ -26,18 +28,18 @@ def loginaction(request):
         if user is None:
             return render(request, 'error.html')
         
-        # Get the stored hashed password from the database (index 2 for password)
-        stored_hashed_password = user[2]  # Assuming the password is at index 2
+        # Get the stored hashed password from the database 
+        stored_hashed_password = user[2]  
 
         # Use Django's check_password function to verify the entered password
         if check_password(pwd, stored_hashed_password):
-            # Password is correct, redirect to welcome page
-            return render(request, "welcome.html")
+            # Password is correct, redirect to home page
+            return redirect('home')
         else:
             # Incorrect password, return to error page
             return render(request, 'error.html')
 
-    return render(request, 'login_page.html')
+    return render(request, 'login_page.html')                                   
 
 
 

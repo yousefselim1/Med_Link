@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold and Flu - MedLink</title>
+    <style>
+        /* styles.css */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        header .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        header .search-bar input {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+
+        header .search-bar button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        header .nav-buttons button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        nav ul li a.active {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        main .hero-section {
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        main .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        main .product-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        main .product-card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        main .product-card p {
+            font-size: 16px;
+            color: #4CAF50;
+        }
+
+        main .product-card button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+                /* Search Form Styling */
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.1rem;
+            border: 2px solid #2a7f62;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 60%;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2a7f62;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #228b53;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/006/541/502/small/template-logo-hands-with-nature-medicine-perfect-for-logo-pharmacy-free-vector.jpg" alt="MedLink Logo">
+            <span>MedLink</span>
+        </div>
+        <div class="container">
+            <form method="POST" action="{% url 'search_drugs' %}">
+                {% csrf_token %}
+                <input type="text" name="search_query" placeholder="Search for drugs..." required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="nav-buttons">
+            <button>Contact Us</button>
+            <button>Cart</button>
+            <button>Notifications</button>
+            <button>Profile</button>
+        </div>
+    </header>
+      
+    <!-- Navigation Section -->
+    <nav>
+        <ul>
+            <li></li> <a href="{% url 'pain_relief' %}">Pain Relief</a></li>
+            <li> <a href="{% url 'cold_and_flu' %}">Cold and Flu</a></li>
+            <li><a href="#">Diabetes Care</a></li>
+            <li><a href="#">Digestive Health</a></li>
+            <li><a href="#">First Aid</a></li>
+            <li><a href="#">Skin Care</a></li>
+            <li><a href="#">Child and Baby Care</a></li>
+            <li><a href="#">Heart Health</a></li>
+            <li><a href="#">Eye and Ear Care</a></li>
+            <li><a href="#">Respiratory Health</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+        <div class="hero-section">
+            <h1>Cold and Flu Relief</h1>
+            <p>Fight the symptoms of cold and flu with our effective remedies and solutions.</p>
+        </div>
+
+        <!-- Product Grid Section -->
+        <section class="product-grid">
+            <div class="product-card">
+                <img src="download.jpg" alt="Cough Syrup">
+                <h2>Cough Syrup</h2>
+                <p>$9.99</p>
+                <a href="{% url 'view_cart' %}">
+                    <button>Add to Cart</button>
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="download (1).jpg" alt="Nasal Spray">
+                <h2>Nasal Decongestant Spray</h2>
+                <p>$7.49</p>
+                <a href="{% url 'view_cart' %}">
+                    <button>Add to Cart</button>
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="download (2).jpg" alt="Vitamin C">
+                <h2>Vitamin C Tablets</h2>
+                <p>$11.99</p>
+                <a href="{% url 'view_cart' %}">
+                    <button>Add to Cart</button>
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="download (3).jpg" alt="Strepsils">
+                <h2>Strepsils</h2>
+                <p>$4.99</p>
+                <a href="{% url 'view_cart' %}">
+                    <button>Add to Cart</button>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
