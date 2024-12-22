@@ -233,13 +233,17 @@ EMAIL_HOST_PASSWORD = '@yousefdark1@'
 
 
 
-PAYMOB_API_KEY = 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBeE16WTNNQ3dpYm1GdFpTSTZJbWx1YVhScFlXd2lmUS4tazNtVk9xaTVwVzI2Z0MyVHVLZWF2OHg3bTBpMHcyNXczc21qVVdQZjBDZUtsV3BNcTZOT3ExQU0tdU5yZ25kM1hQOFpES2VJcW1BTTJvd1pndUxSdw=='
-PAYMOB_SECRET_KEY = 'egy_sk_test_3c4d75e9a9a6c248d4cde01d74a883b1367b987d1b85c636a0b1eaff6a9be2db'
-# In settings.py
-PAYMOB_INTEGRATION_ID = 'egy_pk_test_MVlyVyX07lftynLFQyZkRiMJXMqcbEEq'
+# PAYMOB_API_KEY = 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBeE16WTNNQ3dpYm1GdFpTSTZJbWx1YVhScFlXd2lmUS4tazNtVk9xaTVwVzI2Z0MyVHVLZWF2OHg3bTBpMHcyNXczc21qVVdQZjBDZUtsV3BNcTZOT3ExQU0tdU5yZ25kM1hQOFpES2VJcW1BTTJvd1pndUxSdw=='
+# PAYMOB_SECRET_KEY = 'egy_sk_test_3c4d75e9a9a6c248d4cde01d74a883b1367b987d1b85c636a0b1eaff6a9be2db'
+# # In settings.py
+# PAYMOB_INTEGRATION_ID = 'egy_pk_test_MVlyVyX07lftynLFQyZkRiMJXMqcbEEq'
 
 
 # settings.py
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Uses database to store session data
 SESSION_COOKIE_AGE = 86400  # Session cookies expire in 24 hours
+
+
+
+
