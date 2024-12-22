@@ -1,0 +1,313 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f8f8;
+      min-height: 100vh;
+    }
+    .container {
+      display: flex;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 900px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .payment-section, .summary-section {
+      padding: 20px;
+    }
+    .payment-section {
+      width: 60%;
+      border-right: 1px solid #ddd;
+    }
+    .summary-section {
+      width: 40%;
+      background-color: #f4f4f4;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #218838;
+    }
+    .order-summary {
+      font-size: 14px;
+    }
+    .order-summary h2 {
+      font-size: 18px;
+    }
+    .order-summary .item {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+    }
+    .order-summary .total {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .disclaimer {
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="payment-section">
+      <h2>Payment</h2>
+      <form>
+        <div class="form-group">
+          <label>Pick up at:</label>
+          <input type="radio" name="pickup" value="home"> Home
+          <input type="radio" name="pickup" value="pharmacy"> Pharmacy
+        </div>
+        <div class="form-group">
+          <label>Pay With:</label>
+          <input type="radio" name="payment" value="card"> Card
+          <input type="radio" name="payment" value="cash"> Cash
+        </div>
+        <div class="form-group">
+          <label for="card-number">Card Number</label>
+          <input type="text" id="card-number" placeholder="#### #### #### ####" required>
+        </div>
+        <div class="form-group">
+          <label for="expiration-date">Expiration Date</label>
+          <input type="text" id="expiration-date" placeholder="MM/YY" required>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="number" id="cvv" placeholder="###" required>
+        </div>
+        <button type="submit" class="btn">Pay EGP</button>
+      </form>
+      <p class="disclaimer">Your personal data will be used to process your order.</p>
+    </div>
+    <div class="summary-section">
+      <h2>Order Summary</h2>
+      <div class="order-summary">
+        <div class="item">
+          <span>Items: </span>
+          <span>EGP</span>
+        </div>
+        <hr>
+        <div class="item">
+          <span>Subtotal: </span>
+          <span>EGP</span>
+        </div>
+        <div class="item">
+          <span>Shipping: </span>
+          <span>EGP</span>
+        </div>
+        <hr>
+        <div class="item total">
+          <span>Total: </span>
+          <span>EGP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f8f8;
+      min-height: 100vh;
+    }
+    .container {
+      display: flex;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 900px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .payment-section, .summary-section {
+      padding: 20px;
+    }
+    .payment-section {
+      width: 60%;
+      border-right: 1px solid #ddd;
+    }
+    .summary-section {
+      width: 40%;
+      background-color: #f4f4f4;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="radio"], input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #218838;
+    }
+    .order-summary {
+      font-size: 14px;
+    }
+    .order-summary h2 {
+      font-size: 18px;
+    }
+    .order-summary .item {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+    }
+    .order-summary .total {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .disclaimer {
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="payment-section">
+      <h2>Payment</h2>
+      <form>
+        <div class="form-group">
+          <label>Pick up at:</label>
+          <input type="radio" name="pickup" value="home"> Home
+          <input type="radio" name="pickup" value="pharmacy"> Pharmacy
+        </div>
+        <div class="form-group">
+          <label>Pay With:</label>
+          <input type="radio" name="payment" value="card"> Card
+          <input type="radio" name="payment" value="cash"> Cash
+        </div>
+        <div class="form-group">
+          <label for="card-number">Card Number</label>
+          <input type="text" id="card-number" placeholder="#### #### #### ####" required>
+        </div>
+        <div class="form-group">
+          <label for="expiration-date">Expiration Date</label>
+          <input type="text" id="expiration-date" placeholder="MM/YY" required>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="number" id="cvv" placeholder="###" required>
+        </div>
+        <button type="submit" class="btn">Pay EGP</button>
+      </form>
+      <p class="disclaimer">Your personal data will be used to process your order.</p>
+    </div>
+    <div class="summary-section">
+      <h2>Order Summary</h2>
+      <div class="order-summary">
+        {% for item in items %}
+          <div class="item">
+            <span>{{ item.name }} x {{ item.quantity }}</span>
+            <span>EGP {{ item.total|floatformat:2 }}</span>
+          </div>
+        {% empty %}
+          <p>No items in your cart.</p>
+        {% endfor %}
+        <hr>
+        <div class="item">
+          <span>Subtotal:</span>
+          <span>EGP {{ total|floatformat:2 }}</span>
+        </div>
+        <div class="item">
+          <span>Shipping:</span>
+          <span>EGP {{ shipping|floatformat:2 }}</span>
+        </div>
+        <hr>
+        <div class="item total">
+          <span>Total:</span>
+          <span>EGP {{ grand_total|floatformat:2 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+    

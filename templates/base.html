@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}MedLink{% endblock %}</title>
+  <style>
+    /* Add the entire CSS here */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.1rem;
+            border: 2px solid #2a7f62;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2a7f62;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #228b53;
+        }
+
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #f8f9fa;
+      padding: 10px 0;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .hero {
+      flex-grow: 1;
+      background-color: #2d5d33;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/006/541/502/small/template-logo-hands-with-nature-medicine-perfect-for-logo-pharmacy-free-vector.jpg" alt="MedLink">
+
+    <div class="container">
+      <form method="POST" action="{% url 'search_drugs' %}">
+          {% csrf_token %}
+          <input type="text" name="search_query" placeholder="Search for drugs..." required>
+          <button type="submit">Search</button>
+      </form>
+  </div>
+
+  <div class="action-buttons">
+    <a href="{% url 'contact' %}" 
+    style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+    border-radius: 5px; text-decoration: none;"> contact us </a>
+
+    <a href="{% url 'notification' %}" 
+    style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+    border-radius: 5px; text-decoration: none;"> notification </a>
+    <a href="{% url 'profile' %}" 
+    style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+    border-radius: 5px; text-decoration: none;"> profile </a>
+
+
+  </div>
+  </header>
+  <nav>
+    <a href="{% url 'pain_relief' %}">Pain Relief</a>
+    <a href="{% url 'cold_and_flu' %}">Cold and Flu</a>
+    <a href="#">Diabetes Care</a>
+    <a href="#">Digestive Health</a>
+    <a href="#">First Aid</a>
+    <a href="#">Skin Care</a>
+    <a href="#">Child and Baby Care</a>
+    <a href="#">Heart Health</a>
+    <a href="#">Eye and Ear Care</a>
+    <a href="#">Respiratory Health</a>
+  </nav>
+  <main>
+    {% block content %}
+    <!-- Default content or leave blank -->
+    {% endblock %}
+  </main>
+</body>
+</html>

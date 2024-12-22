@@ -12,12 +12,12 @@ def search_drugs(request):
         
         if search_query:
             # Establish connection to the MySQL database
-            m = sql.connect(host="localhost", user="medkink_user", passwd="yourpassword", database="medkink")
+            m = sql.connect(host="localhost", user="root", passwd="moha_12345", database="medkink")
             cursor = m.cursor()
             
             # SQL query to search for drugs using LIKE for partial matches
             query = """
-                SELECT id, name, category, description, price 
+                SELECT id, name, category, description, price, link
                 FROM Drugs 
                 WHERE name LIKE %s OR category LIKE %s OR description LIKE %s
             """
@@ -32,7 +32,7 @@ def search_drugs(request):
             results = cursor.fetchall()
             
             # Prepare the results for rendering
-            drugs = [{'id': row[0], 'name': row[1], 'category': row[2], 'description': row[3], 'price': row[4]} for row in results]
+            drugs = [{'id': row[0], 'name': row[1], 'category': row[2], 'description': row[3], 'price': row[4], 'link': row[5] } for row in results]
             
             # Close the database connection
             cursor.close()
@@ -48,6 +48,7 @@ def search_drugs(request):
     else:
         # If the request is not a POST, show the search form
         return render(request, 'drug_search.html')
+
 
 
 

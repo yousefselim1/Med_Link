@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center;">Your Cart</h1>
+<div style="margin: 20px; padding: 10px; border: 1px solid #ccc;">
+    {% if products %}
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f9f9f9;">
+                <th style="padding: 8px; border: 1px solid #ddd;">Product</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Quantity</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Price</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Subtotal</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in products %}
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">
+                    <img src="{{ item.link }}" alt="{{ item.name }}" style="width: 50px; height: auto; margin-right: 10px;">
+                  
+                </td>
+                <td style="padding: 8px; border: 1px solid #ddd;">
+                    <form action="{% url 'update_cart' %}" method="post">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="0" style="width: 50px;">
+                        <input type="hidden" name="productId" value="{{ item.id }}">
+                        <button type="submit" style="background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">Update</button>
+                    </form>
+                </td>
+                <td style="padding: 8px; border: 1px solid #ddd;">$ {{ item.price|floatformat:2 }}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">$ {{ item.subtotal|floatformat:2 }}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">
+                  <form action="{% url 'remove_from_cart' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="productId" value="{{ item.id }}">
+                    <button type="submit" style="background-color: #f44336; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">Remove</button>
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="text-align: right; margin-top: 20px;">
+        <strong>Total: $ {{ total_price|floatformat:2 }}</strong>
+    </div>
+    {% else %}
+    <p style="text-align: center;">Your cart is empty.</p>
+    {% endif %}
+</div>
+
+
+<!-- Add a button to initiate payment -->
+<form action="{% url 'payment_view' %}" method="post">
+  {% csrf_token %}
+  <button type="submit" style="padding: 10px; background-color: blue; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Pay with Paymob
+  </button>
+</form>
+{% endblock %}
+
+
+

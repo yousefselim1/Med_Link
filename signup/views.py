@@ -1,6 +1,3 @@
-
-
-
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render
 import mysql.connector as sql
@@ -17,11 +14,12 @@ ph = ''
 ro = ''
 id = ''
 
-# Create your views here.
+VALID_ROLES = ['admin', 'user', 'moderator']
+
 def signupaction(request):
     global us, fn, ln, s, em, pwd, ad, ph, ro, id
     if request.method == "POST":
-        m = sql.connect(host="localhost", user="medkink_user", passwd="yourpassword", database="medkink")
+        m = sql.connect(host="localhost", user="root", passwd="moha_12345", database="medkink")
         cursor = m.cursor()
         d = request.POST
         for key, value in d.items():
@@ -42,6 +40,10 @@ def signupaction(request):
             if key == "role":
                 ro = value
 
+        # Validate the role
+        if ro not in VALID_ROLES:
+            ro = 'user'  # Default role
+
         # Hash the password before saving it
         hashed_password = make_password(pwd)
 
@@ -51,10 +53,16 @@ def signupaction(request):
             us, fn, ln, em, hashed_password, ph, ad, ro)
 
         # Execute the SQL query and commit the transaction
-        cursor.execute(c)
-        m.commit()
+        try:
+            cursor.execute(c)
+            m.commit()
+        except Exception as e:
+            print("Error:", e)
 
     return render(request, 'signup_page.html')
 
-
-  
+def signup_action(request):
+    if request.method == 'POST':
+        # Handle signup logic
+        return render(request, 'signup_success.html')
+    return render(request, 'signup_form.html')
