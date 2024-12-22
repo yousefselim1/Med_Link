@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding-top: 50px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: white;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-group input {
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            outline: none;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .form-group input:focus {
+            border-color: #4CAF50;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+
+        .form-group .icon {
+            margin-right: 12px;
+        }
+
+        /* Styling for the text above the Google button */
+        .login-alternative {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .or-login-text {
+            font-size: 16px;
+            color: #346106;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+
+        /* Google Sign-In Button */
+        .google-signin-btn {
+        display: inline-block; 
+        border-radius: 50%; 
+        cursor: pointer;
+        box-sizing: content-box; 
+        text-align: center;
+        padding: 0; 
+        }
+
+        .google-signin-btn:hover {
+            opacity: 0.8; 
+        }
+
+        .google-signin-btn img {
+            width: 50px; /* Adjust size of the logo */
+            height: 50px;
+        }
+
+
+        .signup-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="message {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} -->
+
+
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Login Page</title>
+
+                <div class="container">
+                    {% csrf_token %}
+                    {% load static %}
+                    {% load socialaccount %}
+
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email" name="email" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <input type="password" placeholder="Enter your password" name="password" required autocomplete="off">
+                        </div>
+            
+                        <div class="form-group">
+                            <input type="submit" value="Login">
+                        </div>
+                    </form>
+            
+ 
+             <a href="{% url 'password_reset' %}">Forgotten your password </a>
+            <!-- Gmail Logo -->
+            <div class="login-alternative">
+                <p class="or-login-text">Or Login with</p>
+            </div>
+
+            <!-- Google Sign-In Button -->
+            <div class="form-group">
+                <a href="{% provider_login_url 'google' %}?next={% url 'home' %}" class="google-signin-btn">
+                    <img src="https://freelogopng.com/images/all_img/1657952641google-logo-png-image.png" alt="Google Logo">
+                </a>
+
+                <a href="{% provider_login_url 'facebook' %}?next={% url 'home' %}" class="google-signin-btn">
+                    <img src="data:image/jpeg;base64,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" alt="facebook Logo">
+                </a>
+         </div>
+
+
+      
+        
+        <!-- Signup Footer -->
+        <div class="signup-footer">
+            Don't have an account? <a href="http://localhost:8000/signup/">Register</a>
+        </div>
+    </div>
+
+
+</body>
+</html>
