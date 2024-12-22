@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedLink</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      height: 40px;
+    }
+
+/* search bar  */
+    form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.1rem;
+            border: 2px solid #2a7f62;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2a7f62;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #228b53;
+        }
+
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #f8f9fa;
+      padding: 10px 0;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .hero {
+      flex-grow: 1;
+      background-color: #2d5d33;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+    
+    header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 60px;
+            margin-right: 30px;
+        }
+
+    .message {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .message.success {
+        color: #155724;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+    }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/006/541/502/small/template-logo-hands-with-nature-medicine-perfect-for-logo-pharmacy-free-vector.jpg" alt="MedLink">
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="message {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    <div class="container">
+      <form method="POST" action="{% url 'search_drugs' %}">
+          {% csrf_token %}
+          <input type="text" name="search_query" placeholder="Search for drugs..." required>
+          <button type="submit">Search</button>
+      </form>
+  </div>
+
+
+
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+   <button type="submit">Logout</button>
+  </form>
+
+    <div class="action-buttons">
+      <a href="{% url 'contact' %}" 
+      style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+      border-radius: 5px; text-decoration: none;"> contact us </a>
+
+       <a href="{% url 'view_cart' %}" 
+       style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+      border-radius: 5px; text-decoration: none;">  View Cart </a>
+
+
+
+      <a href="{% url 'notification' %}" 
+      style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+      border-radius: 5px; text-decoration: none;"> notification </a>
+      <a href="{% url 'profile' %}" 
+      style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+      border-radius: 5px; text-decoration: none;"> profile </a>
+
+      <a href="{% url 'administrator' %}" 
+      style="padding: 7px 14px; color: white; background-color: rgb(26, 143, 26);
+      border-radius: 5px; text-decoration: none;"> profile </a>
+
+    </div>
+  </header>
+  <nav>
+    <a href="{% url 'pain_relief' %}">Pain Relief</a>
+    <a href="{% url 'cold_and_flu' %}">Cold and Flu</a>
+    <a href="#">Diabetes Care</a>
+    <a href="#">Digestive Health</a>
+    <a href="#">First Aid</a>
+    <a href="#">Skin Care</a>
+    <a href="#">Child and Baby Care</a>
+    <a href="#">Heart Health</a>
+    <a href="#">Eye and Ear Care</a>
+    <a href="#">Respiratory Health</a>
+  </nav>
+  <div class="hero">
+    <h1>Your Prescription for Affordable Health Solutions!</h1>
+    <p>Elevate your health journey with exclusive discounts and unparalleled convenience.
+       Your path to well-being starts here, where every purchase is a prescription for savings.</p>
+
+<a href="{% url 'products' %}" style="display: inline-block; padding: 10px 20px; background-color: #3ead34; color: white; text-align: center; text-decoration: none; border: none; border-radius: 4px; cursor: pointer;">Start Shopping</a>
+
+  </div>
+
+
+</body>
+</html>
+

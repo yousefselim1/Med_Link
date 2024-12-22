@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Welcome Page</title>
+        <style>
+            body{
+                background-color: black;
+                color: blue;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><h1>Welcome :-)</h1></center>
+
+        <!-- welcome.html -->
+
+        <h1>Welcome to the Drug Search</h1>
+
+        <!-- Search Form -->
+        <form action="{% url 'search_drugs' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="search_query" placeholder="Search for a drug" value="{{ search_query }}">
+            <button type="submit">Search</button>
+        </form>
+    
+        <!-- Display Results -->
+        {% if results %}
+            <h3>Search Results:</h3>
+            <ul>
+                {% for drug in results %}
+                    <li>
+                        <strong>{{ drug.1 }}</strong> ({{ drug.2 }})<br>
+                        Description: {{ drug.3 }}<br>
+                        Price: ${{ drug.4 }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elif message %}
+            <p>{{ message }}</p>
+        {% endif %}
+
+    </body>
+
+</html>
+
+<!-- cd C:\Users\DELL\medlink_backend\project1 -->

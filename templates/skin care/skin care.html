@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Care - MedLink</title>
+    <style>
+        /* styles.css */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        header .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        header .search-bar input {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+
+        header .search-bar button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        header .nav-buttons button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        nav ul li a.active {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        main .hero-section {
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        main .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        main .product-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        main .product-card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        main .product-card p {
+            font-size: 16px;
+            color: #4CAF50;
+        }
+
+        main .product-card button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="MedLink Logo">
+            <span>MedLink</span>
+        </div>
+        <div class="container">
+            <form method="POST" action="{% url 'search_drugs' %}">
+                {% csrf_token %}
+                <input type="text" name="search_query" placeholder="Search for drugs..." required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="nav-buttons">
+            <button>Contact Us</button>
+            <button>Cart</button>
+            <button>Notifications</button>
+            <button>Profile</button>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Pain Relief</a></li>
+            <li><a href="#">Cold and Flu</a></li>
+            <li><a href="#">Diabetes Care</a></li>
+            <li><a href="#">Digestive Health</a></li>
+            <li><a href="#">First Aid</a></li>
+            <li><a href="#" class="active">Skin Care</a></li>
+            <li><a href="#">Child and Baby Care</a></li>
+            <li><a href="#">Heart Health</a></li>
+            <li><a href="#">Eye and Ear Care</a></li>
+            <li><a href="#">Respiratory Health</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="hero-section">
+            <h1>Skin Care Products</h1>
+            <p>Nourish and protect your skin with our carefully curated range of skincare solutions.</p>
+        </div>
+        <section class="product-grid">
+            <!-- Sample Product 1 -->
+            <div class="product-card">
+                <img src="Product 1.webp" alt="Product 1">
+                <h2>Moisturizing Cream</h2>
+                <p>$12.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Sample Product 2 -->
+            <div class="product-card">
+                <img src="Product 2.jpg" alt="Product 2">
+                <h2>Sunscreen SPF 50</h2>
+                <p>$15.49</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Sample Product 3 -->
+            <div class="product-card">
+                <img src="Product 3.jpg" alt="Product 3">
+                <h2>Anti-Aging Serum</h2>
+                <p>$22.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Sample Product 4 -->
+            <div class="product-card">
+                <img src="Product 4.jpg" alt="Product 4">
+                <h2>Face Cleanser</h2>
+                <p>$9.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
